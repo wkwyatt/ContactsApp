@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gjv-uf-nXS">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="EPr-QP-QDK">
+            <objects>
+                <navigationController id="gjv-uf-nXS" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qKD-cx-DTi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mk8-OO-1Xd" kind="relationship" relationship="rootViewController" id="YSH-AM-pqw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2I2-Yq-Oea" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="385" y="38"/>
+        </scene>
+        <!--Contact List View Controller-->
+        <scene sceneID="rTO-Vu-HWd">
+            <objects>
+                <viewController storyboardIdentifier="ContactListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mk8-OO-1Xd" customClass="ContactListViewController" customModule="ContactsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q17-D1-EJ2"/>
+                        <viewControllerLayoutGuide type="bottom" id="uTc-6c-MQQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YS2-mX-nil">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YBb-pN-hOF">
+                                <rect key="frame" x="0.0" y="64" width="600" height="528"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YBb-pN-hOF" firstAttribute="top" secondItem="Q17-D1-EJ2" secondAttribute="bottom" id="7aj-Yk-5Ws"/>
+                            <constraint firstAttribute="trailing" secondItem="YBb-pN-hOF" secondAttribute="trailing" id="EpO-tj-rjG"/>
+                            <constraint firstItem="uTc-6c-MQQ" firstAttribute="top" secondItem="YBb-pN-hOF" secondAttribute="bottom" constant="8" symbolic="YES" id="HT5-Ih-h49"/>
+                            <constraint firstItem="YBb-pN-hOF" firstAttribute="leading" secondItem="YS2-mX-nil" secondAttribute="leading" id="Mqg-lD-ZNQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zv9-sP-s9r"/>
+                    <connections>
+                        <outlet property="tableView" destination="YBb-pN-hOF" id="FZh-rw-kKR"/>
+                        <segue destination="x4k-MK-W4Q" kind="show" identifier="ContactDetailsSegue" id="jMf-WU-sdY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BXT-0V-WHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1302" y="38"/>
+        </scene>
+        <!--Contact Details View Controller-->
+        <scene sceneID="lr2-TT-7bR">
+            <objects>
+                <viewController id="x4k-MK-W4Q" customClass="ContactDetailsViewController" customModule="ContactsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZMH-hp-VXb"/>
+                        <viewControllerLayoutGuide type="bottom" id="PhP-Mc-X0y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QiI-dd-FAy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zkC-qR-hHL">
+                                <rect key="frame" x="35" y="119" width="250" height="400"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="firstName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18n-J3-yku">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="eCO-NN-8bj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="eCO-NN-8bj"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lastName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYq-Ou-TXj">
+                                        <rect key="frame" x="0.0" y="57" width="250" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="QBU-x6-gU8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="QBU-x6-gU8"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phoneNumber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW7-zE-mO2">
+                                        <rect key="frame" x="0.0" y="114" width="250" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="vgQ-o4-nLG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="vgQ-o4-nLG"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="streetAddress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hB-1O-EF6">
+                                        <rect key="frame" x="0.0" y="171" width="250" height="58"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="NfI-aZ-jdl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="NfI-aZ-jdl"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbM-Vw-iSX">
+                                        <rect key="frame" x="0.0" y="229" width="250" height="57"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="state" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VS-je-Jcb">
+                                        <rect key="frame" x="0.0" y="286" width="250" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="oAy-Sm-SUn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="oAy-Sm-SUn"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zipCode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xg2-fj-mdZ">
+                                        <rect key="frame" x="0.0" y="343" width="250" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="DyJ-iN-5xz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="DyJ-iN-5xz"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="cYq-Ou-TXj" firstAttribute="height" secondItem="18n-J3-yku" secondAttribute="height" id="6uA-uA-BXu"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="AFN-8O-zNo"/>
+                                    <constraint firstItem="jbM-Vw-iSX" firstAttribute="height" secondItem="18n-J3-yku" secondAttribute="height" id="BUx-SN-Zvr"/>
+                                    <constraint firstItem="7hB-1O-EF6" firstAttribute="height" secondItem="18n-J3-yku" secondAttribute="height" id="Eqn-CE-lgq"/>
+                                    <constraint firstAttribute="height" constant="400" id="OxF-cQ-ziV"/>
+                                    <constraint firstItem="xg2-fj-mdZ" firstAttribute="height" secondItem="18n-J3-yku" secondAttribute="height" id="WNv-vQ-hst"/>
+                                    <constraint firstItem="bW7-zE-mO2" firstAttribute="height" secondItem="18n-J3-yku" secondAttribute="height" id="Xg9-WL-NfP"/>
+                                    <constraint firstItem="1VS-je-Jcb" firstAttribute="height" secondItem="18n-J3-yku" secondAttribute="height" id="goA-Dn-4f2"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zkC-qR-hHL" firstAttribute="leading" secondItem="QiI-dd-FAy" secondAttribute="leadingMargin" constant="15" id="7kx-AW-aId"/>
+                            <constraint firstItem="zkC-qR-hHL" firstAttribute="leading" secondItem="QiI-dd-FAy" secondAttribute="leadingMargin" constant="-5" id="LTN-EM-ViW"/>
+                            <constraint firstItem="zkC-qR-hHL" firstAttribute="top" secondItem="ZMH-hp-VXb" secondAttribute="bottom" constant="55" id="Lha-tt-Mss"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="LTN-EM-ViW"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="cityLabel" destination="jbM-Vw-iSX" id="1GU-r3-r3I"/>
+                        <outlet property="firstNameLabel" destination="18n-J3-yku" id="5zk-GW-pe5"/>
+                        <outlet property="lastNameLabel" destination="cYq-Ou-TXj" id="SNN-7m-Udg"/>
+                        <outlet property="phoneNumberLabel" destination="bW7-zE-mO2" id="2Ff-eA-qbB"/>
+                        <outlet property="stateLabel" destination="1VS-je-Jcb" id="Ifm-gh-HRY"/>
+                        <outlet property="streetAddressLabel" destination="7hB-1O-EF6" id="y3F-Yv-sew"/>
+                        <outlet property="zipCodeLabel" destination="xg2-fj-mdZ" id="CIw-L3-PGl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8AR-Cn-XEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1964" y="38"/>
+        </scene>
+    </scenes>
+</document>
