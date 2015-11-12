@@ -13,22 +13,41 @@ struct DataManager {
     
     
     func saveContacts(contacts: [Contact]) {
-        //    do some stuff
+        //    do some stuff     
+        let destinationPath = self.filePathForArchiving()
+        NSKeyedArchiver.archiveRootObject(contacts, toFile: destinationPath)
     }
     
-    func loadContacts() -> [Contact] {
-        var contacts = [Contact]()
-        for var i = 0; i < 10; i++ {
-            var c = Contact()
-            c.firstName = "Vinny"
-            c.lastName = "Barbarino"
-            c.streetAddress = "123 Happy Street"
-            c.phoneNumber = "404-555-1212"
-            c.city = "Brooklyn"
-            c.state = "New York"
-            c.zipCode = "11201"
-            contacts.append(c)
+    private func filePathForArchiving() -> String {
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let destinationPath = "\(documentsPath)/SavedContacts"
+        
+        return destinationPath
+    }
+    
+    func loadContacts() -> [Contact]? {
+        let destinationPath = self.filePathForArchiving()
+        
+        if let contacts:[Contact] = NSKeyedUnarchiver.unarchiveObjectWithFile(destinationPath) as? [Contact] {
+            return contacts
         }
-        return contacts
+        
+        return [Contact]()
+        
+        
+//        CODE FOR CONTACT AS A STRUCT
+//        var contacts = [Contact]()
+//        for var i = 0; i < 10; i++ {
+//            var c = Contact()
+//            c.firstName = "Vinny"
+//            c.lastName = "Barbarino"
+//            c.streetAddress = "123 Happy Street"
+//            c.phoneNumber = "404-555-1212"
+//            c.city = "Brooklyn"
+//            c.state = "New York"
+//            c.zipCode = "11201"
+//            contacts.append(c)
+//        }
+//        return contacts
     }
 }

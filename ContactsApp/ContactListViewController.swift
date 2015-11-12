@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ContactListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NewContactDelegate {
     
 //    variables
     var contacts:[Contact]?
@@ -56,7 +56,21 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
                     detailVC.selectedContact = selectedContact
                 }
             }
+        } else if segue.identifier == "NewContactSegue" {
+            if let newContactVC = segue.destinationViewController as? NewContactViewController {
+                newContactVC.delegate = self
+            }
         }
+    }
+    
+    
+    // protocals for custom delegate
+    func didCreateNewContact(newContact: Contact) {
+        self.contacts?.append(newContact)
+        
+        DataManager.sharedManager.saveContacts(self.contacts!)
+        
+        self.tableView.reloadData()
     }
 
 

@@ -47,7 +47,13 @@
                             <constraint firstItem="YBb-pN-hOF" firstAttribute="leading" secondItem="YS2-mX-nil" secondAttribute="leading" id="Mqg-lD-ZNQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Zv9-sP-s9r"/>
+                    <navigationItem key="navigationItem" id="Zv9-sP-s9r">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fR0-62-r4h">
+                            <connections>
+                                <segue destination="jUz-N1-J9c" kind="show" identifier="NewContactSegue" id="VcQ-ge-n5l"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="YBb-pN-hOF" id="FZh-rw-kKR"/>
                         <segue destination="x4k-MK-W4Q" kind="show" identifier="ContactDetailsSegue" id="jMf-WU-sdY"/>
@@ -199,7 +205,92 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AR-Cn-XEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1964" y="38"/>
+            <point key="canvasLocation" x="2020" y="560"/>
+        </scene>
+        <!--New Contact View Controller-->
+        <scene sceneID="uAN-fg-Z9F">
+            <objects>
+                <viewController id="jUz-N1-J9c" customClass="NewContactViewController" customModule="ContactsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dJH-SC-Fal"/>
+                        <viewControllerLayoutGuide type="bottom" id="EE1-LE-b1r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eaU-w9-W5n">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIM-Y5-Sy8">
+                                <rect key="frame" x="283" y="550" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonTouched:" destination="jUz-N1-J9c" eventType="touchUpInside" id="G3Z-w9-J3h"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Kdn-m6-vbT">
+                                <rect key="frame" x="30" y="69" width="300" height="270"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vKC-2E-5Vi">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f2f-93-exz">
+                                        <rect key="frame" x="0.0" y="40" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MUb-5k-I19">
+                                        <rect key="frame" x="0.0" y="80" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xBt-jg-SZs">
+                                        <rect key="frame" x="0.0" y="120" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lpY-mv-UgB">
+                                        <rect key="frame" x="0.0" y="160" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uhW-bi-Wtb">
+                                        <rect key="frame" x="0.0" y="200" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCa-NQ-hz1">
+                                        <rect key="frame" x="0.0" y="240" width="300" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="CQA-Xe-ObW"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kdn-m6-vbT" firstAttribute="top" secondItem="dJH-SC-Fal" secondAttribute="bottom" constant="5" id="R5p-XO-HKh"/>
+                            <constraint firstItem="EE1-LE-b1r" firstAttribute="top" secondItem="lIM-Y5-Sy8" secondAttribute="bottom" constant="20" id="qMG-Qs-cwT"/>
+                            <constraint firstItem="lIM-Y5-Sy8" firstAttribute="centerX" secondItem="eaU-w9-W5n" secondAttribute="centerX" id="v9y-a1-ZXJ"/>
+                            <constraint firstItem="Kdn-m6-vbT" firstAttribute="leading" secondItem="eaU-w9-W5n" secondAttribute="leadingMargin" constant="10" id="zRH-c4-CRq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cityTextField" destination="lpY-mv-UgB" id="86v-Bd-VTl"/>
+                        <outlet property="firstNameTextField" destination="vKC-2E-5Vi" id="Uda-WJ-rBt"/>
+                        <outlet property="lastNameTextField" destination="f2f-93-exz" id="lP1-F7-NKY"/>
+                        <outlet property="phoneNumberTextField" destination="MUb-5k-I19" id="Oxj-3g-sWu"/>
+                        <outlet property="stateTextField" destination="uhW-bi-Wtb" id="CjT-b5-qX5"/>
+                        <outlet property="streetAddressTextField" destination="xBt-jg-SZs" id="pp3-Cq-9o8"/>
+                        <outlet property="zipCodeTextField" destination="TCa-NQ-hz1" id="k6T-kl-VVT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3h7-eG-OV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2020" y="-226"/>
         </scene>
     </scenes>
 </document>
