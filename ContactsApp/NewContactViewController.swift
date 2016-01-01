@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewContactViewController: UIViewController {
     
@@ -21,11 +22,18 @@ class NewContactViewController: UIViewController {
     
 //    vars
     var delegate : NewContactDelegate?
+    var editContact: Contact?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let contactId = self.editContact?.contactId {
+            self.editContact = DataManager.sharedManager.getContact(contactId: Int(contactId))
+            
+            if self.editContact != nil { self.updateTextFields() }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,22 +43,62 @@ class NewContactViewController: UIViewController {
     
 //    Storyboard Actions
     @IBAction func saveButtonTouched(sender: AnyObject) {
-        if self.delegate != nil {
-            let newContact = Contact()
-            
-            newContact.firstName = self.firstNameTextField.text
-            newContact.lastName = self.lastNameTextField.text
-            newContact.phoneNumber = self.phoneNumberTextField.text
-            newContact.streetAddress = self.streetAddressTextField.text
-            newContact.city = self.cityTextField.text
-            newContact.state = self.stateTextField.text
-            newContact.zipCode = self.zipCodeTextField.text
-            
-            self.delegate!.didCreateNewContact(newContact)
+        var contact: Contact! = nil
+
+        if self.editContact != nil {
+            contact = self.editContact
+        } else {
+            contact = DataManager.sharedManager.createContact()
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        
+        self.updateContact(contact)
+        self.navigationController?.popViewControllerAnimated(true) 
+//        if self.delegate != nil {
+//            let newContact:Contact = DataManager.sharedManager.createContact()
+//            
+//            newContact.firstName = self.firstNameTextField.text
+//            newContact.lastName = self.lastNameTextField.text
+//            newContact.phoneNumber = self.phoneNumberTextField.text
+//            newContact.address?.street = self.streetAddressTextField.text
+//            newContact.address?.city = self.cityTextField.text
+//            newContact.address?.state = self.stateTextField.text
+//            newContact.address?.zipCode = self.zipCodeTextField.text
+//            
+//            DataManager.sharedManager.save()
+//            self.delegate!.didCreateNewContact(newContact)
+//        }
+    }
+    
+    func updateContact(contact: Contact){
+        
+        contact.firstName = self.firstNameTextField.text
+        contact.lastName = self.lastNameTextField.text
+        contact.phoneNumber = self.phoneNumberTextField.text
+        contact.address?.street = self.streetAddressTextField.text
+        contact.address?.city = self.cityTextField.text
+        contact.address?.state = self.stateTextField.text
+        contact.address?.zipCode = self.zipCodeTextField.text
+        
+        DataManager.sharedManager.save()
+        
+        if self.delegate != nil {
+            if self.editContact != nil {
+                self.delegate?.didUpdateContact(contact)
+            } else {
+                self.delegate!.didCreateNewContact(contact)
+            }
+        }
     }
 
+    func updateTextFields() {
+        self.firstNameTextField.text = self.editContact?.firstName
+        self.lastNameTextField.text = self.editContact?.lastName
+        self.phoneNumberTextField.text = self.editContact?.phoneNumber
+        self.streetAddressTextField.text = self.editContact?.address?.street
+        self.cityTextField.text = self.editContact?.address?.city
+        self.stateTextField.text = self.editContact?.address?.state
+        self.zipCodeTextField.text = self.editContact?.address?.zipCode
+    }
     /*
     // MARK: - Navigation
 

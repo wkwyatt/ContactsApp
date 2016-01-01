@@ -23,6 +23,7 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
         self.contacts = DataManager.sharedManager.loadContacts()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        print(contacts)
     }
     
 
@@ -33,11 +34,21 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let contact = self.contacts![indexPath.row]
         
-        let cell = UITableViewCell()
+        if let cell = tableView.dequeueReusableCellWithIdentifier("contactCellReuseID", forIndexPath: indexPath) as? ContactTableViewCell {
+            cell.firstNameLabel.text = contact.firstName
+            cell.lastNameLabel.text = contact.lastName
+            
+            if indexPath.row % 2 == 0 {
+                cell.contactImage.image = UIImage(named: "Contact_Female")
+            } else {
+                cell.contactImage.image = UIImage(named: "Contact_Male")
+            }
+            return cell
+        }
         
-        cell.textLabel?.text = "\(contact.firstName!) \(contact.lastName!)"
+//        cell.textLabel?.text = "\(contact.firstName!) \(contact.lastName!)"
         
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -64,14 +75,30 @@ class ContactListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
+    @IBAction func importButtonTouched(sender: AnyObject) {
+        let wsm = WebServiceManager()
+        wsm.fetchContacts(currContacts: self.contacts) {
+            (newContacts) -> Void in
+            //code in closure 
+            for contact in newContacts {
+                self.contacts?.append(contact)
+            }
+        }
+    }
+    
+    @IBAction func refreshButtonTouched(sender: AnyObject) {
+        self.tableView.reloadData()
+    }
+
     // protocals for custom delegate
     func didCreateNewContact(newContact: Contact) {
         self.contacts?.append(newContact)
         
-        DataManager.sharedManager.saveContacts(self.contacts!)
-        
         self.tableView.reloadData()
     }
 
+    func didUpdateContact(contact: Contact) {
+        // code here
+    }
 
 }
